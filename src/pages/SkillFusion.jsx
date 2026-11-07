@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { skillSources, fusionPacks } from '../data/skillFusion'
 
 const BASE = import.meta.env.BASE_URL || '/'
@@ -76,6 +77,76 @@ export default function SkillFusion() {
             <span className="text-[#1d1d1f] font-medium"> WorkBuddy</span>，随时召唤调用。
           </p>
         </div>
+
+        {/* Workshop Section */}
+        <section className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass rounded-2xl p-6 md:p-10 border border-dark-border relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-72 h-72 bg-red-500/10 rounded-full blur-[100px]" />
+            <div className="relative z-10">
+              <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-red-500/10 to-amber-500/10 border border-red-500/20 text-red-600 text-sm">
+                新工作坊 · 定档后开放报名
+              </div>
+              <h2 className="text-2xl md:text-4xl font-black text-[#1d1d1f] mb-3">拆专家工作坊 · 本期拆《毛泽东选集》</h2>
+              <p className="text-[#6e6e73] max-w-3xl mb-8">
+                目标不是读完毛选，是把<b className="text-[#1d1d1f]">思想家蒸馏成技能</b>——现场拆讲师做好的毛选技能包（矛盾分析、调查研究、战略方法……怎么从原著长出来），再亲手蒸馏出你自己的专家：一句召唤，随时上矩阵干活。
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-4 mb-8">
+                <div className="p-5 rounded-xl bg-dark-card-hover/50 border border-dark-border">
+                  <div className="text-xs text-red-600 font-semibold mb-2">拆 · 讲师的毛选技能包</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">8 套思想体系全打开</div>
+                  <p className="text-xs text-[#86868b] mt-2">本页可直接下载的毛选技能就是现场教材：矛盾分析、调查研究怎么从《矛盾论》《反对本本主义》一节一节蒸馏成 SKILL.md，当堂拆给你看。</p>
+                </div>
+                <div className="p-5 rounded-xl bg-dark-card-hover/50 border border-dark-border">
+                  <div className="text-xs text-red-600 font-semibold mb-2">做 · 你的专属专家</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">换一本书，做你自己的专家</div>
+                  <p className="text-xs text-[#86868b] mt-2">选你熟的一本书（一本兵法、一门手艺、一位你佩服的人），照同样的五步蒸馏法做出属于你的技能与专家团。</p>
+                </div>
+                <div className="p-5 rounded-xl bg-gradient-to-br from-red-500/10 to-amber-500/10 border border-red-500/30">
+                  <div className="text-xs text-red-600 font-semibold mb-2">交付台阶 · 上矩阵</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">你的专家，上算力矩阵跑</div>
+                  <p className="text-xs text-[#86868b] mt-2">做好的专家接上工作流——定时用你的思想体系扫热点、读来信、出日报，专家从「点开才在」变成「全天在岗」。</p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <div className="text-xs font-semibold text-[#86868b] tracking-widest mb-3">带走三样</div>
+                  <ul className="space-y-2 text-sm text-[#424245]">
+                    <li className="flex gap-2"><span className="text-red-600 font-bold">①</span>拆懂「原著 → 技能」的五步蒸馏法（选段 → 提方法 → 定步骤 → 写护栏 → 组专家团）</li>
+                    <li className="flex gap-2"><span className="text-red-600 font-bold">②</span>你自己的一个专家技能包，发到你自己的 GitHub 仓（现场发出去）</li>
+                    <li className="flex gap-2"><span className="text-red-600 font-bold">③</span>一条上了矩阵的工作流：你的专家定时出选题、出报告，卡了会喊你</li>
+                  </ul>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-[#86868b] tracking-widest mb-3">适合谁</div>
+                  <ul className="space-y-2 text-sm text-[#424245]">
+                    <li>读过毛选、想让方法真正落到决策里的人</li>
+                    <li>想把自己信的一套思想固化成可召唤 AI 专家的人</li>
+                    <li>上过拆技能工作坊、想再进一阶的老学员</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => { try { navigator.clipboard?.writeText('ikoning365') } catch (e) {} }}
+                  className="px-5 py-2.5 rounded-xl bg-[#0071e3] text-white text-sm font-semibold hover:bg-[#0077ed] transition-all"
+                  title="点击复制微信号"
+                >
+                  定档早知道 · 微信 ikoning365 📋
+                </button>
+                <span className="text-xs text-[#86868b]">时间地点定档后，报名帖发拆书帮公众号 · 12 人小班</span>
+              </div>
+            </div>
+          </motion.div>
+        </section>
 
         <div className="flex justify-center gap-2 mb-10">
           {[
