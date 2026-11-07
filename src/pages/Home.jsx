@@ -15,8 +15,10 @@ const chaifa = [
   { k: '拆为己用', d: '不是学完就散，是带走你自己的知识库、工作流、阵地和复盘看板。', icon: 'M16 7l-4 4-4-4m8 6l-4 4-4-4' },
 ]
 
-// 六大模块全景（与导航同序：拆指南→拆搭子→拆软件→拆技能→拆专家→共拆AI；数字=站内真实资产）
+// 八大模块全景（与导航同序：拆成长→拆经典→拆指南→拆搭子→拆软件→拆技能→拆专家→共拆AI；数字=站内真实资产）
 const modules = [
+  { k: '拆成长', emoji: '🧭', d: '三级九拆过级路线，33 个官方技能点逐项拆解', stat: '33 个', statLabel: '技能点 · TF1-1~TF3-3', href: '/learning-path', tile: 'bg-indigo-500/10', num: 'text-indigo-600' },
+  { k: '拆经典', emoji: '📖', d: '2255 本致用经典热拆库，1713 本已有拆页', stat: '1713 本', statLabel: '已有拆页 · 全库 2255 本', href: '/hot', tile: 'bg-rose-500/10', num: 'text-rose-600' },
   { k: '拆指南', emoji: '📚', d: 'RIA 便签法全库共拆，六大兴趣模块连读', stat: '2255 本', statLabel: '19262 页拆页全库', href: 'https://www.aibay.asia/chailive/', tile: 'bg-teal-500/10', num: 'text-teal-600' },
   { k: '拆搭子', emoji: '🤝', d: '5473 位拆书家名录，按城市/标签匹配搭子', stat: '5473 人', statLabel: '83 分舵 · 7 种合作模式', href: '/chaibuddy', tile: 'bg-amber-500/10', num: 'text-amber-600' },
   { k: '拆软件', emoji: '🖥️', d: '工作坊当场拆开真 AI 软件，接回你的产线', stat: '4 期', statLabel: '真实软件 · 场场有产出', href: '/workshops', tile: 'bg-sky-500/10', num: 'text-sky-600' },
@@ -113,20 +115,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ==================== 六大模块全景 ==================== */}
+      {/* ==================== 八大模块全景 ==================== */}
       <section className="py-24 px-4 bg-[#f5f5f7] border-y border-black/[.05]">
         <div className="max-w-6xl mx-auto">
           <div className="eyebrow mb-3 text-center">站点全景 · 一图看懂</div>
           <h2 className="headline text-[30px] md:text-[40px] text-center mb-4">
-            六个模块，一条<span className="gradient-text">「拆」的进阶线</span>
+            八个模块，一条<span className="gradient-text">「拆」的进阶线</span>
           </h2>
           <p className="text-center text-[#6e6e73] text-[15px] mb-14 max-w-2xl mx-auto">
-            从拆 2255 本书开始，到找到你的搭子、拆开真软件、长出技能、召唤专家——最后加入共建。
+            从三级九拆的过级路，到全库共拆、找到搭子、拆开真软件、长出技能、召唤专家——最后加入共建。
             每一站都有真实数字在跑，不摆概念。
           </p>
           <div className="relative">
-            <div className="hidden lg:block absolute top-[46px] left-[8%] right-[8%] h-[2px] rounded-full bg-gradient-to-r from-teal-400/50 via-sky-400/50 to-fuchsia-400/50" />
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-3">
+            <div className="hidden lg:block absolute top-[46px] left-[12%] right-[12%] h-[2px] rounded-full bg-gradient-to-r from-indigo-400/50 via-teal-400/50 to-fuchsia-400/50" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {modules.map((m, i) => (
                 <motion.div
                   key={m.k}
