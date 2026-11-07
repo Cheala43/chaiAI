@@ -239,13 +239,13 @@
     <div class="pain"><b>④ QQ 邮箱注册 + 开 IMAP · 给网站开「读者来信」通道</b>
       1. 没有QQ邮箱的：<a href="https://mail.qq.com/" target="_blank" rel="noopener" style="color:var(--cyan)">mail.qq.com</a> 注册一个 QQ 号即得邮箱（建议专门用一个号收读者来信，别用主号）；<br>
       2. 登录 <a href="https://mail.qq.com/" target="_blank" rel="noopener" style="color:var(--cyan)">mail.qq.com</a> 网页版 → 设置 → 账户 → 找到「POP3/IMAP/SMTP」服务 → 开启 <b>IMAP/SMTP 服务</b>；<br>
-      3. 按提示发短信验证，生成 <b>授权码</b>（16 位字母，只显示一次）——它不是 QQ 密码，是指令卡 ④ 要交的「信箱钥匙」；<br>
+      3. 按提示发短信验证，生成 <b>授权码</b>（16 位字母，只显示一次）——它不是 QQ 密码，是指令卡 ③ 要交的「信箱钥匙」；<br>
       4. 这个邮箱会挂到你的网站页脚，读者来信它收，WorkBuddy 只读拉取——你的私人邮箱不用暴露。<br>
       <span style="color:var(--mute)">卡住了？详细图文见 <a href="guide.html" style="color:var(--cyan)">跟做手册「邮箱通道」节</a></span></div>
   </div>
 
   <h2 class="sec" id="prompts">🔑 WorkBuddy 提示词 · 复制即用</h2>
-  <p class="secs" style="margin:0 0 4px">四张卡：前两张把网站搭起来，后两张接上「内容→热点」「反馈→邮箱」两条自动链路。用法：复制 → 贴到 <a href="https://www.workbuddy.cn/" target="_blank" rel="noopener" style="color:var(--cyan);font-weight:600">www.workbuddy.cn</a> 对话框 → 把你领好的钥匙贴在冒号后面 → 发送。钥匙还没领？先看上方「开工前四件事」。换品牌、换自我介绍等进阶玩法，见 <a href="guide.html" style="color:var(--cyan);font-weight:600">跟做手册 →</a></p>
+  <p class="secs" style="margin:0 0 4px">四张卡：前两张把网站搭起来，后两张配好 QQ 邮箱通道、装上 rsi 技能跑通自动流程。用法：复制 → 贴到 <a href="https://www.workbuddy.cn/" target="_blank" rel="noopener" style="color:var(--cyan);font-weight:600">www.workbuddy.cn</a> 对话框 → 把你领好的钥匙贴在冒号后面 → 发送。钥匙还没领？先看上方「开工前四件事」。换品牌、换自我介绍等进阶玩法，见 <a href="guide.html" style="color:var(--cyan);font-weight:600">跟做手册 →</a></p>
   <div class="pcards">
     <div class="pcard">
       <div class="pk">指令卡 ① · 交钥匙</div>
@@ -260,16 +260,16 @@
       <div class="pnote">几分钟出网址：https://你的用户名.github.io/chaiAI</div>
     </div>
     <div class="pcard">
-      <div class="pk">指令卡 ③ · 兴趣雷达 · 扫热点选题（链路 A · 内容→热点）</div>
-      <div class="ptext">装好rsi-ima-workbuddy-wechat-web技能后，读取我网站的posts.js分析兴趣词，扫微博/知乎/抖音/头条四榜找热点，结果写入ima「热点选题」目录</div>
+      <div class="pk">指令卡 ③ · QQ 邮箱配置（给网站开「读者来信」通道）</div>
+      <div class="ptext">帮我配置网站的QQ邮箱，我的QQ号和IMAP授权码：</div>
       <button class="pbtn" onclick="copyPrompt(this)">复制提示词</button>
-      <div class="pnote">链路 A：网站内容 → 兴趣词 → 全网四榜 → ima「热点选题」（也可直接说「扫热点选题」）</div>
+      <div class="pnote">把课前领的 QQ 号和 16 位 IMAP 授权码贴在冒号后面再发送；授权码只贴给自己的 WorkBuddy，别发群里</div>
     </div>
     <div class="pcard">
-      <div class="pk">指令卡 ④ · 拉网站反馈（链路 B · 反馈→邮箱）</div>
-      <div class="ptext">我的网站页脚挂了QQ邮箱：QQ号@qq.com，IMAP授权码是：____。拉取读者来信写入ima「网站邮箱信息」目录，只读不删信</div>
+      <div class="pk">指令卡 ④ · 装 rsi 技能 · 跑流程</div>
+      <div class="ptext">装好github.com/kenyanghui/rsi-ima-workbuddy-wechat-web，跑流程</div>
       <button class="pbtn" onclick="copyPrompt(this)">复制提示词</button>
-      <div class="pnote">链路 B：页脚 QQ 邮箱 ← 读者来信 ← IMAP 只读拉取 → ima「网站邮箱信息」（也可直接说「拉网站反馈」）</div>
+      <div class="pnote">技能装好后自动流程全通：网站体检 / 扫热点选题 / 拉网站反馈（SETUP.md 三分钟可重装到家里电脑）</div>
     </div>
   </div>
   <p class="pnote" style="margin:6px 0 0">💡 出错统一动作：把报错原话发回给 WorkBuddy，说「请修好后继续」。邮箱授权码只贴给自己的 WorkBuddy，别发群里。</p>
