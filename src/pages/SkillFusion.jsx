@@ -93,24 +93,24 @@ export default function SkillFusion() {
               </div>
               <h2 className="text-2xl md:text-4xl font-black text-[#1d1d1f] mb-3">拆专家工作坊 · 本期拆《毛泽东选集》</h2>
               <p className="text-[#6e6e73] max-w-3xl mb-8">
-                目标不是读完毛选，是把<b className="text-[#1d1d1f]">思想家蒸馏成技能</b>——现场拆讲师做好的毛选技能包（矛盾分析、调查研究、战略方法……怎么从原著长出来），再亲手蒸馏出你自己的专家：一句召唤，随时上矩阵干活。
+                不换书、不多吃——<b className="text-[#1d1d1f]">就吃透这一个理论的 AI 化</b>。现场拆讲师做好的毛选技能包（矛盾分析、调查研究、战略方法……怎么从原著长出来），再按<b className="text-[#1d1d1f]">你自己的需求</b>调教它：拆为己用，让毛选专家陪你打仗、陪你复盘、陪你成长。
               </p>
 
               <div className="grid md:grid-cols-3 gap-4 mb-8">
                 <div className="p-5 rounded-xl bg-dark-card-hover/50 border border-dark-border">
                   <div className="text-xs text-red-600 font-semibold mb-2">拆 · 讲师的毛选技能包</div>
-                  <div className="text-sm font-bold text-[#1d1d1f]">8 套思想体系全打开</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">20+ 套方法全打开</div>
                   <p className="text-xs text-[#86868b] mt-2">本页可直接下载的毛选技能就是现场教材：矛盾分析、调查研究怎么从《矛盾论》《反对本本主义》一节一节蒸馏成 SKILL.md，当堂拆给你看。</p>
                 </div>
                 <div className="p-5 rounded-xl bg-dark-card-hover/50 border border-dark-border">
-                  <div className="text-xs text-red-600 font-semibold mb-2">做 · 你的专属专家</div>
-                  <div className="text-sm font-bold text-[#1d1d1f]">换一本书，做你自己的专家</div>
-                  <p className="text-xs text-[#86868b] mt-2">选你熟的一本书（一本兵法、一门手艺、一位你佩服的人），照同样的五步蒸馏法做出属于你的技能与专家团。</p>
+                  <div className="text-xs text-red-600 font-semibold mb-2">调 · 按你的需求改造</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">把专家对准你的战场</div>
+                  <p className="text-xs text-[#86868b] mt-2">把毛选专家对准你眼前的事——带团队、做决策、打市场：教它你的语境、你的约束、你的对手，越用越懂你，不是通用答案，是<b>你的</b>答案。</p>
                 </div>
                 <div className="p-5 rounded-xl bg-gradient-to-br from-red-500/10 to-amber-500/10 border border-red-500/30">
-                  <div className="text-xs text-red-600 font-semibold mb-2">交付台阶 · 上矩阵</div>
-                  <div className="text-sm font-bold text-[#1d1d1f]">你的专家，上算力矩阵跑</div>
-                  <p className="text-xs text-[#86868b] mt-2">做好的专家接上工作流——定时用你的思想体系扫热点、读来信、出日报，专家从「点开才在」变成「全天在岗」。</p>
+                  <div className="text-xs text-red-600 font-semibold mb-2">用 · 上矩阵陪伴成长</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">从「点开才在」到「全天在岗」</div>
+                  <p className="text-xs text-[#86868b] mt-2">调教好的专家接上工作流——每晚用矛盾分析陪你复盘、每周五用持久战三阶段校你的节奏、成长台账自动记，卡了会喊你。</p>
                 </div>
               </div>
 
@@ -118,17 +118,17 @@ export default function SkillFusion() {
                 <div>
                   <div className="text-xs font-semibold text-[#86868b] tracking-widest mb-3">带走三样</div>
                   <ul className="space-y-2 text-sm text-[#424245]">
-                    <li className="flex gap-2"><span className="text-red-600 font-bold">①</span>拆懂「原著 → 技能」的五步蒸馏法（选段 → 提方法 → 定步骤 → 写护栏 → 组专家团）</li>
-                    <li className="flex gap-2"><span className="text-red-600 font-bold">②</span>你自己的一个专家技能包，发到你自己的 GitHub 仓（现场发出去）</li>
-                    <li className="flex gap-2"><span className="text-red-600 font-bold">③</span>一条上了矩阵的工作流：你的专家定时出选题、出报告，卡了会喊你</li>
+                    <li className="flex gap-2"><span className="text-red-600 font-bold">①</span>拆懂「原著 → 技能」的蒸馏全过程（选段 → 提方法 → 定步骤 → 写护栏），吃透这一个理论怎么 AI 化</li>
+                    <li className="flex gap-2"><span className="text-red-600 font-bold">②</span>一个按你需求调教过的毛选专家：你的语境、你的战场，发到你自己的 GitHub 仓（现场发出去）</li>
+                    <li className="flex gap-2"><span className="text-red-600 font-bold">③</span>一条上了矩阵的陪伴工作流：每日复盘 · 每周校奏 · 成长台账，专家一直陪着你</li>
                   </ul>
                 </div>
                 <div>
                   <div className="text-xs font-semibold text-[#86868b] tracking-widest mb-3">适合谁</div>
                   <ul className="space-y-2 text-sm text-[#424245]">
-                    <li>读过毛选、想让方法真正落到决策里的人</li>
-                    <li>想把自己信的一套思想固化成可召唤 AI 专家的人</li>
-                    <li>上过拆技能工作坊、想再进一阶的老学员</li>
+                    <li>读过毛选、想让方法真正落到自己决策里的人</li>
+                    <li>有具体战场（带团队 / 做项目 / 打市场），想拆为己用的人</li>
+                    <li>想要一个越用越懂自己的 AI 陪跑专家的人</li>
                   </ul>
                 </div>
               </div>
@@ -143,6 +143,146 @@ export default function SkillFusion() {
                   定档早知道 · 微信 ikoning365 📋
                 </button>
                 <span className="text-xs text-[#86868b]">时间地点定档后，报名帖发拆书帮公众号 · 12 人小班</span>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Workshop Section 2: First Principles */}
+        <section className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass rounded-2xl p-6 md:p-10 border border-dark-border relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-72 h-72 bg-violet-500/10 rounded-full blur-[100px]" />
+            <div className="relative z-10">
+              <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-violet-500/10 to-cyan-500/10 border border-violet-500/20 text-violet-600 text-sm">
+                下一期 · 拆专家工作坊
+              </div>
+              <h2 className="text-2xl md:text-4xl font-black text-[#1d1d1f] mb-3">拆专家工作坊 · 下期拆《第一性原理》</h2>
+              <p className="text-[#6e6e73] max-w-3xl mb-8">
+                遇到难题别急着抄答案——<b className="text-[#1d1d1f]">把问题拆回不可再分的基石，从零推起</b>。现场拆讲师做好的第一性原理技能包（公理化思维、还原论解构、隐含假设挖掘……），再对准你手头最难的那个决策调教它，调好上矩阵，天天替你拆。
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-4 mb-8">
+                <div className="p-5 rounded-xl bg-dark-card-hover/50 border border-dark-border">
+                  <div className="text-xs text-violet-600 font-semibold mb-2">拆 · 讲师的第一性原理技能包</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">10 套思维框架全打开</div>
+                  <p className="text-xs text-[#86868b] mt-2">公理化思维、还原论解构、逻辑三洽、隐含假设挖掘、反共识决策——怎么从理论长成 SKILL.md，当堂拆给你看。</p>
+                </div>
+                <div className="p-5 rounded-xl bg-dark-card-hover/50 border border-dark-border">
+                  <div className="text-xs text-violet-600 font-semibold mb-2">调 · 对准你最难的那个决策</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">用它拆你自己的难题</div>
+                  <p className="text-xs text-[#86868b] mt-2">定价、转型、要不要 All in——现场用它拆一遍：挖出你的隐含假设，检验逻辑三洽，看哪些「常识」其实经不起推敲。</p>
+                </div>
+                <div className="p-5 rounded-xl bg-gradient-to-br from-violet-500/10 to-cyan-500/10 border border-violet-500/30">
+                  <div className="text-xs text-violet-600 font-semibold mb-2">用 · 上矩阵跑</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">你的拆解专家，天天替你拆</div>
+                  <p className="text-xs text-[#86868b] mt-2">调教好的专家接上工作流上矩阵——新决策先过一遍隐含假设检验，定期用它重审你在跑的业务假设，过期假设自动喊你。</p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <div className="text-xs font-semibold text-[#86868b] tracking-widest mb-3">带走三样</div>
+                  <ul className="space-y-2 text-sm text-[#424245]">
+                    <li className="flex gap-2"><span className="text-violet-600 font-bold">①</span>拆懂「理论 → 技能」的蒸馏法：公理化 / 还原论 / 逻辑三洽怎么变成 AI 会执行的步骤</li>
+                    <li className="flex gap-2"><span className="text-violet-600 font-bold">②</span>一个按你的决策场景调教过的第一性原理专家，发到你自己的 GitHub 仓（现场发出去）</li>
+                    <li className="flex gap-2"><span className="text-violet-600 font-bold">③</span>一条上了矩阵的假设检验工作流：新决策先拆、旧假设定期重审，卡了会喊你</li>
+                  </ul>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-[#86868b] tracking-widest mb-3">适合谁</div>
+                  <ul className="space-y-2 text-sm text-[#424245]">
+                    <li>正卡在一个大决策上、不想再抄别人答案的人</li>
+                    <li>想给团队装一套「先拆假设再拍板」机制的操盘手</li>
+                    <li>上过毛选期、想再吃透一个理论 AI 化的老学员</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => { try { navigator.clipboard?.writeText('ikoning365') } catch (e) {} }}
+                  className="px-5 py-2.5 rounded-xl bg-[#0071e3] text-white text-sm font-semibold hover:bg-[#0077ed] transition-all"
+                  title="点击复制微信号"
+                >
+                  定档早知道 · 微信 ikoning365 📋
+                </button>
+                <span className="text-xs text-[#86868b]">时间地点定档后，报名帖发拆书帮公众号 · 12 人小班</span>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Workshop Section 3: Chan Theory */}
+        <section className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass rounded-2xl p-6 md:p-10 border border-dark-border relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-72 h-72 bg-orange-500/10 rounded-full blur-[100px]" />
+            <div className="relative z-10">
+              <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/20 text-orange-600 text-sm">
+                排期中 · 第三期预告
+              </div>
+              <h2 className="text-2xl md:text-4xl font-black text-[#1d1d1f] mb-3">拆专家工作坊 · 第三期拆《缠论》</h2>
+              <p className="text-[#6e6e73] max-w-3xl mb-8">
+                缠论最难的不是理论，是<b className="text-[#1d1d1f]">每天雷打不动的看盘纪律</b>——这件事恰好 AI 最擅长。现场拆讲师做好的缠论技能包（走势结构、中枢、买卖点、背驰、多级别联立），对准你自己盯的标的调教它，上矩阵每日自动复盘。
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-4 mb-8">
+                <div className="p-5 rounded-xl bg-dark-card-hover/50 border border-dark-border">
+                  <div className="text-xs text-orange-600 font-semibold mb-2">拆 · 讲师的缠论技能包</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">5 套技术体系全打开</div>
+                  <p className="text-xs text-[#86868b] mt-2">笔段划分、中枢定位、三类买卖点、背驰诊断、多级别联立——怎么把「走势终完美」变成 AI 可执行的判定步骤，当堂拆给你看。</p>
+                </div>
+                <div className="p-5 rounded-xl bg-dark-card-hover/50 border border-dark-border">
+                  <div className="text-xs text-orange-600 font-semibold mb-2">调 · 对准你盯的标的</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">教它你的级别与纪律</div>
+                  <p className="text-xs text-[#86868b] mt-2">你做日线还是 30 分钟级别？守哪类买卖点？止损纪律是什么？把你的操作级别和纪律写进技能——它按你的体系复盘，不给你通用答案。</p>
+                </div>
+                <div className="p-5 rounded-xl bg-gradient-to-br from-orange-500/10 to-amber-500/10 border border-orange-500/30">
+                  <div className="text-xs text-orange-600 font-semibold mb-2">用 · 上矩阵跑</div>
+                  <div className="text-sm font-bold text-[#1d1d1f]">收盘后，它先替你看一遍</div>
+                  <p className="text-xs text-[#86868b] mt-2">上矩阵定时跑：每日收盘自动出复盘简报——走势分解、中枢位置、背驰提示一条不少；你只看结论和图，不被盘中情绪带跑。</p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <div className="text-xs font-semibold text-[#86868b] tracking-widest mb-3">带走三样</div>
+                  <ul className="space-y-2 text-sm text-[#424245]">
+                    <li className="flex gap-2"><span className="text-orange-600 font-bold">①</span>拆懂「技术体系 → 技能」的蒸馏法：走势结构与买卖点判定怎么变成 AI 的可执行步骤</li>
+                    <li className="flex gap-2"><span className="text-orange-600 font-bold">②</span>一个按你的级别与纪律调教过的缠论专家，发到你自己的 GitHub 仓（现场发出去）</li>
+                    <li className="flex gap-2"><span className="text-orange-600 font-bold">③</span>一条上了矩阵的每日复盘工作流：收盘自动出简报，背驰/买卖点变动会喊你</li>
+                  </ul>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-[#86868b] tracking-widest mb-3">适合谁</div>
+                  <ul className="space-y-2 text-sm text-[#424245]">
+                    <li>学过缠论、但总败在「没时间每天画笔标中枢」的人</li>
+                    <li>想让复盘从意志力变成自动流水线的交易者</li>
+                    <li>上过前两期、想再吃透一个体系 AI 化的老学员</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => { try { navigator.clipboard?.writeText('ikoning365') } catch (e) {} }}
+                  className="px-5 py-2.5 rounded-xl bg-[#0071e3] text-white text-sm font-semibold hover:bg-[#0077ed] transition-all"
+                  title="点击复制微信号"
+                >
+                  定档早知道 · 微信 ikoning365 📋
+                </button>
+                <span className="text-xs text-[#86868b]">只做方法拆解与自动复盘，不荐股不预测行情 · 12 人小班</span>
               </div>
             </div>
           </motion.div>
