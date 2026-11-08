@@ -310,13 +310,14 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <div className="eyebrow mb-4">關於</div>
-            <h2 className="headline text-[30px] md:text-[40px] mb-5">维尔康主理人</h2>
-            <p className="text-[13px] tracking-[0.2em] text-[#7d9287]">主治中医师 · 从医 22 年</p>
+            <h2 className="headline text-[32px] md:text-[42px] mb-4">赵绮娜</h2>
+            <p className="text-[13px] tracking-[0.2em] text-[#7d9287]">维尔康 Welcome 工作室 主理人</p>
+            <p className="text-[12px] tracking-[0.14em] text-[#8b9c92] mt-2.5">主治中医师 · 从医 22 年 · 广州中医药大学双专业</p>
           </div>
 
           <div className="space-y-6 text-[15px] leading-[2] text-[#3f5148]">
             <p>
-              我毕业于<span className="text-[#2f6b58]">广州中医药大学</span>，中医学与针灸推拿双专业，
+              我是赵绮娜，毕业于<span className="text-[#2f6b58]">广州中医药大学</span>，中医学与针灸推拿双专业，
               从医二十二年余，主治中医师。现为广东省中西医结合学会康复专业委员会常务委员、
               广东省中医药学会小儿推拿专委会委员。
             </p>
@@ -388,8 +389,8 @@ export default function Home() {
             有话想问，就先留言
           </h2>
           <p className="text-[14.5px] leading-[1.95] text-[#c9ded3] mb-10 max-w-lg mx-auto">
-            线上咨询为主。把你的情况写清楚，我会尽快回。
-            <br />线下调理需另行预约。
+            线上咨询为主，留言由<span className="text-white">赵绮娜</span>医师本人回复。
+            <br />把你的情况写清楚，我会尽快回；线下调理需另行预约。
           </p>
 
           <div className="inline-block border border-[#4a7a68] px-10 py-8 bg-[#1f4739]/60">

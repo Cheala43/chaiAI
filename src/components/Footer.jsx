@@ -12,7 +12,8 @@ export default function Footer() {
             </div>
             <p className="text-[13px] leading-[1.9] text-[#7d9287] max-w-xs">
               中医 · 针灸 · 推拿 · 治脊 · 拉伸。以辨证为先，以调理为要。<br />
-              主治中医师 · 从医 22 年 · 广州中医药大学双专业<br />
+              赵绮娜 · 主治中医师 · 从医 22 年<br />
+              广州中医药大学 中医学 · 针灸推拿双专业<br />
               养心、养德、养身。
             </p>
           </div>
@@ -41,7 +42,7 @@ export default function Footer() {
             免责声明：本站内容为健康科普与调理思路分享，不构成诊疗意见，也不能替代线下面诊。急症、重症、外伤及不明原因症状，请及时前往正规医疗机构就诊。
           </p>
           <div className="flex flex-col md:flex-row justify-between gap-2 text-[11.5px] text-[#8b9c92]">
-            <span>© {new Date().getFullYear()} 维尔康 Welcome 工作室</span>
+            <span>© {new Date().getFullYear()} 维尔康 Welcome 工作室 · 赵绮娜</span>
             <span>养心 · 养德 · 养身</span>
           </div>
         </div>
