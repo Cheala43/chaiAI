@@ -5,8 +5,10 @@ const navLinks = [
   { href: '#philosophy', label: '三养之道' },
   { href: '#consult', label: '线上咨询' },
   { href: '#kids', label: '小儿推拿' },
+  { href: '#notes', label: '养生随笔' },
   { href: '#about', label: '关于我' },
 ]
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)

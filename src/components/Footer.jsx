@@ -24,6 +24,7 @@ export default function Footer() {
               <li><a href="#services" className="hover:text-[#2f6b58] transition-colors">针灸 · 推拿 · 治脊</a></li>
               <li><a href="#consult" className="hover:text-[#2f6b58] transition-colors">线上辨证咨询</a></li>
               <li><a href="#kids" className="hover:text-[#2f6b58] transition-colors">小儿推拿 · 家长课</a></li>
+              <li><a href="#notes" className="hover:text-[#2f6b58] transition-colors">养生随笔</a></li>
             </ul>
           </div>
 

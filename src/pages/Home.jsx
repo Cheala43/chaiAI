@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import ArticleBody from '../components/ArticleBody'
+import { articles } from '../data/articles'
 
 const services = [
   {
@@ -378,6 +380,25 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== 养生随笔 ==================== */}
+      <section id="notes" className="py-24 px-5 bg-white border-y border-[#dde5dc]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="eyebrow mb-4">養生隨筆</div>
+            <h2 className="headline text-[30px] md:text-[40px] mb-5">节气到了，话就提前说</h2>
+            <p className="lede max-w-xl mx-auto">
+              看诊时来不及细讲的那些，我写成文章放在这里。篇幅不长，都是能落到日常的做法。
+            </p>
+          </div>
+
+          <div className="space-y-16">
+            {articles.map((a) => (
+              <ArticleBody key={a.slug} article={a} />
+            ))}
           </div>
         </div>
       </section>
