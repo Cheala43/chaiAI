@@ -130,8 +130,9 @@ export default function Home() {
               养心 · 养德 · 养身
             </h1>
 
-            <p className="lede max-w-xl mx-auto mb-4">
-              维尔康 Welcome 工作室，专注中医、针灸、推拿、治脊、拉伸。
+            <p className="lede max-w-2xl mx-auto mb-4">
+              我是赵绮娜，在维尔康 Welcome 工作室做中医、针灸、推拿、治脊与拉伸。
+              <br className="hidden sm:block" />
               希望我们的专业，能帮你解除疑惑和病痛。
             </p>
             <p className="text-[13.5px] text-[#8b9c92] tracking-[0.06em] mb-10">
