@@ -1,28 +1,7 @@
-import { Routes, Route, Navigate, useParams } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import About from './pages/About'
-import HotBooks from './pages/HotBooks'
-import HotBookDetail from './pages/HotBookDetail'
-import HotMemoirDetail from './pages/HotMemoirDetail'
-import Skills from './pages/Skills'
-import LearningPath from './pages/LearningPath'
-import Chaibuddy from './pages/Chaibuddy'
-import Coai from './pages/Coai'
-import SkillFusion from './pages/SkillFusion'
-import Workshops from './pages/Workshops'
-import Camp from './pages/Camp'
-
-function RedirectBook() {
-  const { title } = useParams()
-  return <Navigate to={`/hot/book/${encodeURIComponent(title)}`} replace />
-}
-
-function RedirectMemoir() {
-  const { id } = useParams()
-  return <Navigate to={`/hot/memoir/${id}`} replace />
-}
 
 function App() {
   return (
@@ -31,21 +10,8 @@ function App() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/workshops" element={<Workshops />} />
-          <Route path="/camp" element={<Camp />} />
-          <Route path="/book/:title" element={<RedirectBook />} />
-          <Route path="/memoir/:id" element={<RedirectMemoir />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/hot" element={<Navigate to="/hot/books" replace />} />
-          <Route path="/hot/books" element={<HotBooks />} />
-          <Route path="/hot/book/:id" element={<HotBookDetail />} />
-          <Route path="/hot/memoir/:id" element={<HotMemoirDetail />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/skill-fusion" element={<SkillFusion />} />
-          <Route path="/learning-path" element={<LearningPath />} />
-          <Route path="/chaibuddy" element={<Chaibuddy />} />
-          <Route path="/coai" element={<Coai />} />
-          <Route path="/hd-gallery" element={<Navigate to="/chaibuddy" replace />} />
+          {/* 旧站链接统一回到首页，避免 404 */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
       <Footer />

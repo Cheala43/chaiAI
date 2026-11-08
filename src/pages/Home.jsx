@@ -1,278 +1,381 @@
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import workshops, { seriesIntro, stageOf, statusLabelOf, shortDate, nextOpen, doneList, voteThemes } from '../data/workshops'
 
-const pains = [
-  { q: '收藏了一百篇干货，要用时一篇都找不到', a: '知识没有库，就等于没有。工作坊现场，先把它装进去。' },
-  { q: '公众号定了周更，三个月只发了两篇', a: '靠意志力的更新必断。让工作流替你写，你只管按发布。' },
-  { q: 'AI 工具收藏了一排，一个都没用起来', a: '工具不在多，在拆。拆透一个，胜过收藏十个。' },
-  { q: '看了很多 AI 课程，还是做不出自己的东西', a: '因为课里拆的是别人的案例。这里，拆你自己的。' },
+const services = [
+  {
+    k: '针灸',
+    en: 'Acupuncture',
+    tag: '经络 · 气血',
+    d: '以针刺特定穴位疏通经络、调畅气血。常见于颈肩腰腿痛、头痛、失眠、胃肠不适等问题的调理过程中使用。',
+  },
+  {
+    k: '推拿',
+    en: 'Tuina',
+    tag: '经筋 · 手法',
+    d: '以手法作用于经筋与穴位，松解紧张、改善局部循环。久坐劳损、肩颈僵硬、腰背酸沉最为常见。',
+  },
+  {
+    k: '治脊',
+    en: 'Spine Care',
+    tag: '脊柱 · 力线',
+    d: '从脊柱整体力线入手，处理因姿势不良、长期劳损引起的脊背不适与体态问题，注重松解与稳定并重。',
+  },
+  {
+    k: '拉伸',
+    en: 'Stretching',
+    tag: '柔韧 · 活动度',
+    d: '针对性拉伸紧张肌群、激活薄弱肌群，配合呼吸训练，逐步恢复关节活动度与身体协调。',
+  },
+  {
+    k: '辨证调理',
+    en: 'Consultation',
+    tag: '整体 · 体质',
+    d: '把饮食、作息、情志、体质放在一起看，给出可执行的调理方向，而不是只盯住单一症状。',
+  },
+  {
+    k: '小儿推拿',
+    en: 'Pediatric Tuina',
+    tag: '育儿 · 保健',
+    d: '面向儿童的保健调理手法，也教家长在日常里做。重点是增强体质、改善食欲与睡眠。',
+  },
 ]
 
-const chaifa = [
-  { k: '拆什么', d: '拆 AI 软件，拆 AI 本身——只拆 workbuddy 连接器里真实存在的：ima、微信读书、腾讯会议、企查查、飞猪……每一个都是当场拆开、当场接上的真软件。', icon: 'M4 7c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3zm0 5c0 1.66 3.58 3 8 3s8-1.34 8-3m-16 5c0 1.66 3.58 3 8 3s8-1.34 8-3' },
-  { k: '怎么拆', d: '沿用拆书帮 RIA 方法论：R 找到软件里对你有用的片段，I 用自己的话重述它，A 规划出你的下一步行动。', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4' },
-  { k: '拆为己用', d: '不是学完就散，是带走你自己的知识库、工作流、阵地和复盘看板。', icon: 'M16 7l-4 4-4-4m8 6l-4 4-4-4' },
+const sanYang = [
+  {
+    n: '壹',
+    k: '养心',
+    d: '身体的很多不适，根子在情绪与压力。先把心安顿下来，作息、饮食、手法才有落脚处。',
+  },
+  {
+    n: '贰',
+    k: '养德',
+    d: '医者先正己。不夸大、不承诺、不拖延，该建议你去医院检查的时候，一定直说。',
+  },
+  {
+    n: '叁',
+    k: '养身',
+    d: '调理是慢功夫。手法解一时之困，习惯决定长久之安。所以每一份建议，都要能落到日常。',
+  },
 ]
 
-// 八大模块全景（与导航同序：拆成长→拆经典→拆指南→拆搭子→拆软件→拆技能→拆专家→共拆AI；数字=站内真实资产）
-const modules = [
-  { k: '拆成长', emoji: '🧭', d: '三级九拆过级路线，33 个官方技能点逐项拆解', stat: '33 个', statLabel: '技能点 · TF1-1~TF3-3', href: '/learning-path', tile: 'bg-indigo-500/10', num: 'text-indigo-600' },
-  { k: '拆经典', emoji: '📖', d: '2255 本致用经典热拆库，1713 本已有拆页', stat: '1713 本', statLabel: '已有拆页 · 全库 2255 本', href: '/hot', tile: 'bg-rose-500/10', num: 'text-rose-600' },
-  { k: '拆指南', emoji: '📚', d: 'RIA 便签法全库共拆，六大兴趣模块连读', stat: '2255 本', statLabel: '19262 页拆页全库', href: 'https://www.aibay.asia/chailive/', tile: 'bg-teal-500/10', num: 'text-teal-600' },
-  { k: '拆搭子', emoji: '🤝', d: '5473 位拆书家名录，按城市/标签匹配搭子', stat: '5473 人', statLabel: '83 分舵 · 7 种合作模式', href: '/chaibuddy', tile: 'bg-amber-500/10', num: 'text-amber-600' },
-  { k: '拆软件', emoji: '🖥️', d: '工作坊当场拆开真 AI 软件，接回你的产线', stat: '4 期', statLabel: '真实软件 · 场场有产出', href: '/workshops', tile: 'bg-sky-500/10', num: 'text-sky-600' },
-  { k: '拆技能', emoji: '⚡', d: '每个技能拆成便签+信息图+可下载 Skill', stat: '210 个', statLabel: '技能拆解 · 全部可下载', href: '/skills', tile: 'bg-violet-500/10', num: 'text-violet-600' },
-  { k: '拆专家', emoji: '🧠', d: '思想家蒸馏成可召唤的领域 AI 专家团', stat: '8 套', statLabel: '思想体系 · 6 个专家团', href: '/skill-fusion', tile: 'bg-fuchsia-500/10', num: 'text-fuchsia-600' },
-  { k: '共拆AI', emoji: '🚀', d: '六条合作线全部开放，带着你的领域加入', stat: '6 条线', statLabel: '开源共建 · 挑一条进', href: '/coai', tile: 'bg-emerald-500/10', num: 'text-emerald-600' },
+const consultSteps = [
+  {
+    n: '01',
+    k: '说明情况',
+    d: '公众号后台留言，描述不适的部位、持续时间、加重或缓解的因素，以及作息、饮食和已有的检查结果。信息越具体，判断越准。',
+  },
+  {
+    n: '02',
+    k: '梳理思路',
+    d: '给出可能相关的因素、需要留意的地方，以及哪些情况建议先去正规医院排查。这一步不急着给方案。',
+  },
+  {
+    n: '03',
+    k: '调理方案',
+    d: '可执行的居家调理：按揉哪些穴位、怎么做拉伸、饮食作息怎么调。都是在家就能做的动作。',
+  },
+  {
+    n: '04',
+    k: '阶段回看',
+    d: '一段时间后回看变化，再调方向。调理不是一次性交付，是跟着身体反应走的。',
+  },
+]
+
+const kidCourses = [
+  { n: 'A', k: '基础诊断与手法', d: '基本手法、常用穴位，以及怎么在家判断孩子的状态。' },
+  { n: 'B', k: '呼吸道与消化道', d: '针对咳嗽、鼻塞、积食、便秘、腹泻等常见不适的调理手法。' },
+  { n: 'C', k: '其他不适与外治', d: '小儿其他常见不适的调理手法，以及配合的外治方法。' },
+]
+
+const commonAsks = [
+  '久坐办公，肩颈腰背总是发紧发酸',
+  '睡不好、容易累，休息了也缓不过来',
+  '孩子吃饭不香、睡得不安稳',
+  '含胸、驼背、圆肩，体态越来越差',
+  '运动之后恢复慢，总觉得身上“卡着”',
+  '想学一套在家就能给自己和家人做的手法',
 ]
 
 export default function Home() {
-  const nx = nextOpen()
-  const done = doneList()
-  // spotlight 焦点：优先下一场报名中的；全交付完则落最新已交付场（材料回看）；再退首场
-  const first = nx || done[done.length - 1] || workshops[0]
-  const rest = workshops.filter(w => w.id !== first.id)
-
   return (
-    <div className="hero-wash">
+    <div id="top" className="hero-wash">
       {/* ==================== Hero ==================== */}
-      <section className="pt-36 pb-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="eyebrow mb-4">拆书帮广州小蛮腰分舵 AI拆书工作坊阵地</div>
-            <h1 className="headline text-[44px] md:text-[64px] mb-6">
-              别再学 AI 了，<br />
-              <span className="gradient-text">把它拆开，为己所用。</span>
+      <section className="relative pt-32 md:pt-40 pb-24 px-5 overflow-hidden">
+        {/* 装饰：经络细线 */}
+        <svg
+          className="hidden lg:block absolute right-[-60px] top-[80px] w-[420px] opacity-[0.16] pointer-events-none"
+          viewBox="0 0 400 400"
+          fill="none"
+          stroke="#2f6b58"
+          strokeWidth="1"
+        >
+          <circle cx="200" cy="200" r="150" strokeDasharray="2 6" />
+          <circle cx="200" cy="200" r="104" />
+          <path d="M200 50v300M50 200h300M94 94l212 212M306 94L94 306" strokeDasharray="1 5" />
+          <circle cx="200" cy="200" r="22" />
+          <circle cx="200" cy="96" r="4" fill="#2f6b58" />
+          <circle cx="304" cy="200" r="4" fill="#2f6b58" />
+          <circle cx="200" cy="304" r="4" fill="#2f6b58" />
+          <circle cx="96" cy="200" r="4" fill="#2f6b58" />
+        </svg>
+
+        <div className="max-w-3xl mx-auto text-center relative">
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <span className="hidden sm:block h-px w-10 bg-[#2f6b58]/30" />
+              <span className="eyebrow !tracking-[0.22em] sm:!tracking-[0.32em] whitespace-nowrap">中醫 · 針灸 · 推拿 · 治脊 · 拉伸</span>
+              <span className="hidden sm:block h-px w-10 bg-[#2f6b58]/30" />
+            </div>
+
+            <h1 className="headline text-[42px] md:text-[62px] mb-8">
+              养心 · 养德 · 养身
             </h1>
-            <p className="text-[17px] md:text-[19px] leading-relaxed text-[#6e6e73] max-w-2xl mx-auto mb-9">
-              这里不教你收藏工具。每一期工作坊，我们当场拆开一个真实在跑的 AI 软件，
-              用拆书帮的 RIA 方法论拆为己用——3 小时，带走一件你亲手做出来的东西。
+
+            <p className="lede max-w-xl mx-auto mb-4">
+              维尔康 Welcome 工作室，专注中医、针灸、推拿、治脊、拉伸。
+              希望我们的专业，能帮你解除疑惑和病痛。
             </p>
+            <p className="text-[13.5px] text-[#8b9c92] tracking-[0.06em] mb-10">
+              以辨证为先，以调理为要 · 线上咨询为主
+            </p>
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a href={first.link} className="btn-primary">
-                {nx ? '报名工作坊 →' : '回看课程材料 →'}
-              </a>
-              <Link to="/workshops" className="btn-secondary">
-                看全部主题 & 投票 →
-              </Link>
+              <a href="#contact" className="btn-primary w-full sm:w-auto">微信咨询</a>
+              <a href="#services" className="btn-secondary w-full sm:w-auto">看调理项目</a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ==================== 学习者痛点 ==================== */}
-      <section className="py-20 px-4 bg-white border-y border-black/[.05]">
+      {/* ==================== 三养之道 ==================== */}
+      <section id="philosophy" className="py-24 px-5 bg-white border-y border-[#dde5dc]">
         <div className="max-w-5xl mx-auto">
-          <div className="eyebrow mb-3 text-center">从你出发</div>
-          <h2 className="headline text-[30px] md:text-[38px] text-center mb-12">这些卡点，是不是很熟悉？</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {pains.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="apple-card p-6"
-              >
-                <div className="text-[16px] font-semibold text-[#1d1d1f] mb-2.5">“{p.q}”</div>
-                <div className="text-[14px] leading-relaxed text-[#6e6e73]">{p.a}</div>
-              </motion.div>
-            ))}
+          <div className="text-center mb-16">
+            <div className="eyebrow mb-4">我們的理念</div>
+            <h2 className="headline text-[30px] md:text-[40px] mb-5">三养之道</h2>
+            <p className="lede max-w-xl mx-auto">
+              养心、养德、养身，是维尔康一直在做的事，也是我们和每一位来访者的共同目标。
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* ==================== 拆法 RIA 重释 ==================== */}
-      <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="eyebrow mb-3 text-center">我们的拆法</div>
-          <h2 className="headline text-[30px] md:text-[38px] text-center mb-4">拆的是 AI，拆为己用</h2>
-          <p className="text-center text-[#6e6e73] text-[15px] mb-12 max-w-2xl mx-auto">
-            把 AI 软件拆成你的生产力。
-          </p>
-          <div className="grid md:grid-cols-3 gap-4">
-            {chaifa.map((c, i) => (
-              <motion.div
-                key={c.k}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.1 }}
-                className="apple-card p-7 text-center"
-              >
-                <div className="w-12 h-12 mx-auto mb-4 rounded-2xl bg-[#0071e3]/[.08] flex items-center justify-center">
-                  <svg className="w-6 h-6 text-[#0071e3]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={c.icon} />
-                  </svg>
-                </div>
-                <div className="text-[18px] font-bold text-[#1d1d1f] mb-2.5">{c.k}</div>
-                <div className="text-[13.5px] leading-relaxed text-[#6e6e73]">{c.d}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== 八大模块全景 ==================== */}
-      <section className="py-24 px-4 bg-[#f5f5f7] border-y border-black/[.05]">
-        <div className="max-w-6xl mx-auto">
-          <div className="eyebrow mb-3 text-center">站点全景 · 一图看懂</div>
-          <h2 className="headline text-[30px] md:text-[40px] text-center mb-4">
-            八个模块，一条<span className="gradient-text">「拆」的进阶线</span>
-          </h2>
-          <p className="text-center text-[#6e6e73] text-[15px] mb-14 max-w-2xl mx-auto">
-            从三级九拆的过级路，到全库共拆、找到搭子、拆开真软件、长出技能、召唤专家——最后加入共建。
-            每一站都有真实数字在跑，不摆概念。
-          </p>
-          <div className="relative">
-            <div className="hidden lg:block absolute top-[46px] left-[12%] right-[12%] h-[2px] rounded-full bg-gradient-to-r from-indigo-400/50 via-teal-400/50 to-fuchsia-400/50" />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {modules.map((m, i) => (
-                <motion.div
-                  key={m.k}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.09 }}
-                >
-                  <a href={m.href} className="group block h-full apple-card p-5 !shadow-sm">
-                    <div className="flex lg:justify-center mb-4">
-                      <div className={`relative w-12 h-12 rounded-2xl ${m.tile} flex items-center justify-center text-2xl`}>
-                        {m.emoji}
-                        <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-white border border-black/10 text-[9px] font-bold text-[#86868b] flex items-center justify-center shadow-sm">{i + 1}</span>
-                      </div>
-                    </div>
-                    <div className="text-[17px] font-black text-[#1d1d1f] mb-1 lg:text-center">{m.k}</div>
-                    <div className="text-[11.5px] leading-snug text-[#6e6e73] mb-4 lg:text-center">{m.d}</div>
-                    <div className="lg:text-center">
-                      <div className={`text-[22px] font-black leading-none ${m.num}`}>{m.stat}</div>
-                      <div className="text-[10px] text-[#86868b] mt-1.5 tracking-wide">{m.statLabel}</div>
-                    </div>
-                  </a>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          <div className="mt-10 text-center">
-            <a href="/coai" className="text-[13px] font-semibold text-[#0071e3] hover:text-[#1d1d1f] transition-colors">
-              六条合作线怎么选 → 看共拆AI 专页
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== 工作坊主题 ==================== */}
-      <section className="py-20 px-4 bg-[#f5f5f7]">
-        <div className="max-w-5xl mx-auto">
-          <div className="eyebrow mb-3 text-center">工作坊全系列</div>
-          <h2 className="headline text-[30px] md:text-[38px] text-center mb-4">{nx ? `${shortDate(nx)}开课，` : '课程持续开，'}<span className="gradient-text">其余你说了算</span></h2>
-          <p className="text-center text-[#6e6e73] text-[15px] mb-12 max-w-3xl mx-auto">{seriesIntro}</p>
-
-          {/* 首场 spotlight */}
-          <div className="apple-card p-8 mb-4 border-[#0071e3]/25 shadow-[0_10px_36px_rgba(0,113,227,.10)]">
-            <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0071e3]/10 text-[#0071e3] text-[12px] font-semibold mb-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3] animate-pulse" />
-                  {statusLabelOf(first)}
-                </div>
-                <div className="flex flex-wrap items-center gap-1.5 mb-2">
-                  <span className="text-[11px] text-[#86868b] font-semibold tracking-wide">拆的软件</span>
-                  {first.tools.map(t => (
-                    <span key={t} className="px-2 py-0.5 rounded-md bg-[#1d1d1f] text-white text-[12px] font-bold tracking-wide">{t}</span>
-                  ))}
-                </div>
-                <h3 className="text-[26px] font-bold text-[#1d1d1f] tracking-tight">{first.title}</h3>
-                <p className="text-[#6e6e73] text-[15px] mt-2 max-w-xl">{first.short}</p>
+          <div className="grid md:grid-cols-3 gap-px bg-[#dde5dc]">
+            {sanYang.map((s) => (
+              <div key={s.k} className="bg-white px-8 py-10">
+                <div className="font-serif text-[13px] text-[#b08d4f] tracking-[0.3em] mb-5">{s.n}</div>
+                <div className="font-serif text-[24px] text-[#1d2b25] mb-4 tracking-[0.1em]">{s.k}</div>
+                <div className="text-[13.5px] leading-[1.95] text-[#55685f]">{s.d}</div>
               </div>
-              <a href={stageOf(first) === 'open' ? (first.signupUrl || first.link) : first.link} target={stageOf(first) === 'open' ? '_blank' : undefined} rel="noreferrer" className="btn-primary shrink-0">{stageOf(first) === 'open' ? '立即报名' : '材料回看'}</a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== 调理项目 ==================== */}
+      <section id="services" className="py-24 px-5">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-14 md:flex md:items-end md:justify-between">
+            <div>
+              <div className="eyebrow mb-4">調理項目</div>
+              <h2 className="headline text-[30px] md:text-[40px]">从手法到习惯，一层层往深处走</h2>
             </div>
-            <div className="grid sm:grid-cols-3 gap-3">
-              {[
-                ['时间', first.date],
-                ['地点', first.location],
-                ['费用', first.fee],
-              ].map(([k, v]) => (
-                <div key={k} className="rounded-xl bg-[#f5f5f7] px-4 py-3">
-                  <div className="text-[11px] text-[#86868b] font-semibold mb-0.5">{k}</div>
-                  <div className="text-[13px] text-[#1d1d1f] leading-snug">{v}</div>
+            <p className="lede max-w-sm mt-5 md:mt-0 md:text-right">
+              针灸、推拿、治脊、拉伸各有侧重，实际调理中往往配合使用。
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {services.map((s) => (
+              <div key={s.k} className="herb-card p-7 flex flex-col">
+                <div className="flex items-baseline justify-between mb-4">
+                  <span className="font-serif text-[21px] text-[#1d2b25] tracking-[0.08em]">{s.k}</span>
+                  <span className="text-[10px] uppercase tracking-[0.18em] text-[#b3c2b8]">{s.en}</span>
                 </div>
-              ))}
+                <span className="seal self-start mb-4">{s.tag}</span>
+                <p className="text-[13.5px] leading-[1.95] text-[#55685f] flex-1">{s.d}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-14 pt-8 border-t border-[#dde5dc]">
+            <div className="grid md:grid-cols-12 gap-8 items-start">
+              <div className="md:col-span-3">
+                <div className="eyebrow mb-3">常見諮詢</div>
+                <h3 className="font-serif text-[20px] text-[#1d2b25] leading-relaxed">
+                  大家通常为什么事来问
+                </h3>
+              </div>
+              <div className="md:col-span-9 grid sm:grid-cols-2 gap-x-10 gap-y-4">
+                {commonAsks.map(a => (
+                  <div key={a} className="flex items-start gap-3 text-[13.5px] text-[#55685f] leading-relaxed">
+                    <span className="mt-[9px] w-1 h-1 flex-shrink-0 bg-[#6ba58e]" />
+                    <span>{a}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== 线上咨询 ==================== */}
+      <section id="consult" className="py-24 px-5 herb-texture border-y border-[#dde5dc]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="eyebrow mb-4">線上諮詢</div>
+            <h2 className="headline text-[30px] md:text-[40px] mb-5">线上能做什么，不能做什么</h2>
+            <p className="lede max-w-2xl mx-auto">
+              线上看不到脉象、摸不到肌筋，所以它擅长的是把思路理清楚、把方法教给你；
+              需要动手处理的，还是要回到线下。
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#d6e0d6] mb-16">
+            {consultSteps.map((s) => (
+              <div key={s.n} className="bg-[#f7f8f4] p-7">
+                <div className="font-serif text-[26px] text-[#6ba58e] mb-4">{s.n}</div>
+                <div className="font-serif text-[17px] text-[#1d2b25] mb-3 tracking-[0.06em]">{s.k}</div>
+                <div className="text-[13px] leading-[1.95] text-[#55685f]">{s.d}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            <div className="bg-white border border-[#dde5dc] p-8">
+              <div className="font-serif text-[18px] text-[#2f6b58] mb-4 tracking-[0.08em]">适合线上咨询</div>
+              <ul className="space-y-3 text-[13.5px] text-[#55685f] leading-relaxed">
+                <li>想弄清自己的不适大概属于什么方向</li>
+                <li>需要一套在家能坚持做的调理动作</li>
+                <li>饮食、作息、体质上的长期困惑</li>
+                <li>孩子日常保健手法怎么学、怎么做</li>
+              </ul>
+            </div>
+            <div className="bg-white border border-[#dde5dc] p-8">
+              <div className="font-serif text-[18px] text-[#b08d4f] mb-4 tracking-[0.08em]">建议直接就医</div>
+              <ul className="space-y-3 text-[13.5px] text-[#55685f] leading-relaxed">
+                <li>突发剧烈疼痛、外伤、骨折</li>
+                <li>高热、抽搐、喷射性呕吐等急症</li>
+                <li>不明原因的消瘦、出血、包块</li>
+                <li>需要影像与化验才能判断的情况</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== 小儿推拿 ==================== */}
+      <section id="kids" className="py-24 px-5 bg-white border-b border-[#dde5dc]">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-12 gap-12 items-start">
+            <div className="md:col-span-5">
+              <div className="eyebrow mb-4">小兒推拿</div>
+              <h2 className="headline text-[30px] md:text-[38px] mb-6">
+                手在孩子身上，<br />功夫在家长手里
+              </h2>
+              <p className="lede mb-6">
+                小儿推拿最精髓的地方，是应对孩子日常的各种不适、增强体质，
+                让孩子少吃药、少打针、少往医院跑。
+              </p>
+              <p className="text-[13.5px] leading-[1.95] text-[#55685f] mb-6">
+                但它不是万能的。任何一种医术都有软肋。
+                如果孩子出现高热惊厥、喷射性呕吐、喘憋（三凹征）这类急重症，
+                请立刻送医，不要耽误。
+              </p>
+              <span className="seal">小班 · 2–3 个家庭 · 需提前预约</span>
+            </div>
+
+            <div className="md:col-span-7">
+              <div className="space-y-px bg-[#dde5dc]">
+                {kidCourses.map((c) => (
+                  <div key={c.n} className="bg-white px-7 py-6 flex gap-6">
+                    <div className="font-serif text-[22px] text-[#6ba58e] leading-none pt-1">{c.n}</div>
+                    <div>
+                      <div className="font-serif text-[17px] text-[#1d2b25] mb-2 tracking-[0.04em]">{c.k}</div>
+                      <div className="text-[13px] leading-[1.9] text-[#55685f]">{c.d}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 text-[13px] leading-[1.9] text-[#7d9287]">
+                现场手把手教，也给孩子做一次保健调理。学完回家就能用，遇事不慌。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== 关于我 ==================== */}
+      <section id="about" className="py-24 px-5">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="eyebrow mb-4">關於</div>
+            <h2 className="headline text-[30px] md:text-[40px]">维尔康主理人</h2>
+          </div>
+
+          <div className="space-y-6 text-[15px] leading-[2] text-[#3f5148]">
+            <p>
+              你好，我是维尔康 Welcome 工作室的主理人。工作室主营中医、针灸、推拿、治脊、拉伸，
+              也长期做小儿推拿与亲子养育的推广。
+            </p>
+            <p>
+              2016 年，我在公众号「维尔康 welcome」写下第一篇健康分享，
+              写的是这个工作室想做的事：<span className="text-[#2f6b58]">希望我们的专业，能帮你解除疑惑和病痛</span>。
+              这些年公众号一直在更新，从手法、穴位、饮食起居，到孩子的日常调护，能写的都写了。
+              不是为了攒流量，是想让来问的人，先弄明白自己在经历什么。
+            </p>
+            <p>
+              我的调理思路很朴素：先看清楚，再动手。看体质，也看作息、情绪、饮食习惯——
+              很多反复发作的不适，根子不在疼的那个地方。所以我更愿意花时间问清楚，
+              而不是上来就按几下、扎两针了事。
+            </p>
+            <p>
+              也不承诺“根治”。身体是自己的，手法和外力只是帮忙，
+              真正让状态稳下来的，是日复一日的小习惯。这也是我一直把“养心、养德、养身”
+              挂在最前面的原因。
+            </p>
+            <p>
+              如果你正被某个不适困扰，或者只是想找个懂行的人问问，
+              欢迎在公众号后台留言。能帮的我尽力，需要去医院的，我也会直接说。
+            </p>
+          </div>
+
+          <div className="mt-10 pt-8 border-t border-[#dde5dc] grid sm:grid-cols-3 gap-6 text-center">
+            {[
+              ['2016', '公众号开始更新'],
+              ['五术', '针灸 · 推拿 · 治脊 · 拉伸 · 小儿推拿'],
+              ['三养', '养心 · 养德 · 养身'],
+            ].map(([big, small]) => (
+              <div key={small}>
+                <div className="font-serif text-[26px] text-[#2f6b58] mb-1.5">{big}</div>
+                <div className="text-[11.5px] text-[#8b9c92] tracking-[0.06em]">{small}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== 联系 ==================== */}
+      <section id="contact" className="py-24 px-5 bg-[#245245] text-white">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="text-[11.5px] tracking-[0.34em] text-[#9dc4b2] mb-6">聯繫我們</div>
+          <h2 className="font-serif text-[30px] md:text-[38px] leading-[1.4] mb-6">
+            有话想问，就先留言
+          </h2>
+          <p className="text-[14.5px] leading-[1.95] text-[#c9ded3] mb-10 max-w-lg mx-auto">
+            线上咨询为主。把你的情况写清楚，我会尽快回。
+            <br />线下调理需另行预约。
+          </p>
+
+          <div className="inline-block border border-[#4a7a68] px-10 py-8 bg-[#1f4739]/60">
+            <div className="text-[11.5px] tracking-[0.3em] text-[#9dc4b2] mb-3">微信公眾號</div>
+            <div className="font-serif text-[22px] tracking-[0.1em]">维尔康 welcome</div>
+            <div className="text-[12px] text-[#9dc4b2] mt-4 leading-relaxed">
+              搜索公众号名称，关注后在后台直接留言
             </div>
           </div>
 
-          {/* 02-04 期 compact */}
-          <div className="grid md:grid-cols-3 gap-4">
-            {rest.map((w, i) => (
-              <motion.div
-                key={w.id}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.07 }}
-              >
-                <a href={w.link} className="apple-card p-6 block h-full hover:shadow-[0_12px_32px_rgba(0,0,0,.08)] transition-shadow">
-                  <div className="inline-flex px-2.5 py-0.5 rounded-full bg-black/[.05] text-[#86868b] text-[11.5px] font-semibold mb-3">{statusLabelOf(w)}</div>
-                  <div className="text-[17px] font-bold text-[#1d1d1f] mb-1.5">{w.title}</div>
-                  <p className="text-[13.5px] text-[#6e6e73] leading-relaxed mb-3">{w.short}</p>
-                  <div className="flex flex-wrap items-center gap-1.5">
-                    {w.tools.map(t => (
-                      <span key={t} className="px-2 py-0.5 rounded-md bg-[#1d1d1f] text-white text-[12px] font-bold tracking-wide">{t}</span>
-                    ))}
-                  </div>
-                </a>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link to="/workshops" className="btn-secondary">{voteThemes.length} 个主题 · 点「我支持」投票 →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== 三个带走 ==================== */}
-      <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="eyebrow mb-3 text-center">验收标准</div>
-          <h2 className="headline text-[30px] md:text-[38px] text-center mb-12">每期只认一个标准：你带走了什么</h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {[
-              ['做出来', '不是听完，是当场做出来。每期 3 小时，一半时间你在动手，讲师和助教巡场兜底。'],
-              ['带得走', '产出全部落在你自己的账号里：你的知识库、你的工作流、你的网站、你的看板。'],
-              ['用得上', '每期配 30 天行动计划和复盘卡。第 2 期开课时，先验收上一期你用得怎么样。'],
-            ].map(([t, d], i) => (
-              <motion.div
-                key={t}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.1 }}
-                className="text-center px-4"
-              >
-                <div className="text-[34px] font-bold gradient-text mb-3">0{i + 1}</div>
-                <div className="text-[18px] font-bold text-[#1d1d1f] mb-2">{t}</div>
-                <div className="text-[13.5px] leading-relaxed text-[#6e6e73]">{d}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== CTA ==================== */}
-      <section className="py-20 px-4 bg-white border-t border-black/[.05]">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="headline text-[28px] md:text-[36px] mb-4">先上知识库，开课前就把方法装进口袋。</h2>
-          <p className="text-[#6e6e73] text-[15px] leading-relaxed mb-6">
-            这里是【小蛮腰AI拆书帮】的线上知识库：六期工作坊的全部课件与材料、25 本经典共拆电子书、TF1–TF3 拆书法全套指导，还有广州小蛮腰、北京宇宙中心两个分舵 500+ 期活动的真实拆书实录。AI 帮你把书拆成能用的能力——扫码订阅，随时搜、随时问。
+          <p className="mt-10 text-[12px] text-[#7fa795] leading-[1.9]">
+            本站内容为健康科普，不构成诊疗意见，也不能替代线下面诊。<br />
+            急症重症请及时前往正规医疗机构。
           </p>
-          <div className="flex flex-col items-center gap-3">
-            <img src="/images/ima-knowledge-qr.png" alt="【小蛮腰AI拆书帮】知识库二维码" className="w-[200px] rounded-2xl border border-black/[.06] shadow-[0_8px_28px_rgba(0,0,0,.10)]" />
-            <p className="text-[14px] text-[#6e6e73] font-semibold">微信或 ima 扫码，订阅【小蛮腰AI拆书帮】知识库</p>
-            <a href={nx ? first.link : '/workshops'} className="text-[13px] text-[#0071e3] hover:underline">{nx ? `了解第 ${parseInt(first.no, 10)} 期课程 →` : '看全部课程与材料回看 →'}</a>
-          </div>
         </div>
       </section>
     </div>

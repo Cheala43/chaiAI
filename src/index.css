@@ -1,164 +1,207 @@
 @import "tailwindcss";
 
 @theme {
-  /* Apple light palette — primary accent is Apple blue */
-  --color-neon-purple: #0071e3;
-  --color-neon-blue: #0071e3;
-  --color-neon-cyan: #00c7be;
-  /* repointed surface tokens: every bg-dark-* usage reskins automatically */
-  --color-dark-bg: #fbfbfd;
+  /* ===== 维尔康 · 青绿药草 ==== */
+  --color-herb: #2f6b58;
+  --color-herb-deep: #245245;
+  --color-herb-soft: #6ba58e;
+  --color-gold: #b08d4f;
+  --color-ink: #1d2b25;
+  --color-ink-soft: #55685f;
+  --color-paper: #f7f8f4;
+  --color-paper-2: #eef2ec;
+  --color-line: #dde5dc;
+
+  /* 兼容原站 token（沿用即自动换肤） */
+  --color-neon-purple: #2f6b58;
+  --color-neon-blue: #2f6b58;
+  --color-neon-cyan: #6ba58e;
+  --color-dark-bg: #f7f8f4;
   --color-dark-card: #ffffff;
-  --color-dark-card-hover: #f5f5f7;
-  --color-dark-border: #e8e8ed;
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
+  --color-dark-card-hover: #f2f5ef;
+  --color-dark-border: #dde5dc;
+
+  --font-sans: "Noto Sans SC", "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
-  background-color: #fbfbfd;
-  color: #1d1d1f;
+  font-family: var(--font-sans);
+  background-color: #f7f8f4;
+  color: #1d2b25;
   -webkit-font-smoothing: antialiased;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
+  line-height: 1.75;
 }
 
-/* Frosted glass card (Apple light) */
-.glass {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
+::selection {
+  background: rgba(47, 107, 88, 0.16);
+  color: #14322a;
 }
 
-.glass:hover {
-  border-color: rgba(0, 113, 227, 0.35);
-  box-shadow: 0 8px 28px rgba(0, 113, 227, 0.10);
+/* ===== 基础排版 ===== */
+.headline {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.28;
+  color: #1d2b25;
 }
 
-/* Gradient text — restrained blue→teal */
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #2f6b58;
+}
+
+.lede {
+  color: #55685f;
+  font-size: 1rem;
+  line-height: 1.95;
+}
+
 .gradient-text {
-  background: linear-gradient(135deg, #0071e3, #00c7be);
+  background: linear-gradient(120deg, #2f6b58 0%, #6ba58e 55%, #b08d4f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* RIA section styling (light) */
-.ria-section {
+/* ===== 卡片：宣纸质感 + 极细描边 ===== */
+.apple-card,
+.herb-card {
   background: #ffffff;
-  border: 1px solid #e8e8ed;
-  border-radius: 1.25rem;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(29, 43, 37, 0.03);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.ria-section:hover {
-  border-color: rgba(0, 113, 227, 0.35);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-.ria-label {
-  display: inline-block;
-  padding: 0.25rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-/* Typography for memoir content (light) */
-.memoir-content h1 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: #1d1d1f; }
-.memoir-content h2 { font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #1d1d1f; }
-.memoir-content h3 { font-size: 1.125rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #0071e3; }
-.memoir-content p { margin-bottom: 1rem; line-height: 1.75; color: #424245; }
-.memoir-content strong { color: #1d1d1f; font-weight: 600; }
-.memoir-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #424245; }
-.memoir-content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; color: #424245; }
-.memoir-content li { margin-bottom: 0.25rem; }
-
-/* ===== Apple light design system ===== */
-
-.apple-card {
-  background: #ffffff;
-  border: 1px solid #e8e8ed;
-  border-radius: 1.25rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
-}
-
-.apple-card:hover {
+.apple-card:hover,
+.herb-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
-  border-color: rgba(0, 113, 227, 0.28);
+  box-shadow: 0 16px 40px rgba(29, 43, 37, 0.07);
+  border-color: rgba(47, 107, 88, 0.4);
 }
 
-.eyebrow {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #86868b;
+.glass {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(29, 43, 37, 0.06);
 }
 
-.headline {
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.08;
-  color: #1d1d1f;
-}
-
+/* ===== 按钮 ===== */
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
-  background: #0071e3;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #2f6b58;
   color: #fff;
-  border-radius: 980px;
-  padding: .7rem 1.5rem;
-  font-weight: 600;
-  font-size: .95rem;
-  transition: background .25s ease, transform .25s ease;
-  box-shadow: 0 6px 18px rgba(0, 113, 227, .25);
+  border-radius: 2px;
+  padding: 0.85rem 1.9rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 22px rgba(47, 107, 88, 0.18);
 }
 
 .btn-primary:hover {
-  background: #0077ed;
+  background: #245245;
   transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(47, 107, 88, 0.24);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
-  background: rgba(0, 113, 227, 0.08);
-  color: #0071e3;
-  border-radius: 980px;
-  padding: .7rem 1.5rem;
-  font-weight: 600;
-  font-size: .95rem;
-  transition: background .25s ease;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #2f6b58;
+  border: 1px solid rgba(47, 107, 88, 0.32);
+  border-radius: 2px;
+  padding: 0.85rem 1.9rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 113, 227, 0.14);
+  background: rgba(47, 107, 88, 0.06);
+  border-color: rgba(47, 107, 88, 0.55);
 }
 
+/* ===== 版面装饰 ===== */
 .hero-wash {
   background:
-    radial-gradient(900px 480px at 82% -12%, rgba(0, 113, 227, 0.07), transparent 60%),
-    radial-gradient(700px 420px at -5% 8%, rgba(0, 199, 190, 0.06), transparent 55%);
+    radial-gradient(760px 420px at 78% -8%, rgba(107, 165, 142, 0.14), transparent 62%),
+    radial-gradient(620px 380px at 4% 6%, rgba(176, 141, 79, 0.07), transparent 58%),
+    linear-gradient(180deg, #f7f8f4 0%, #f4f7f2 100%);
 }
 
-/* Scrollbar (light) */
+/* 细横线分隔，像宣纸上的界格 */
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(29, 43, 37, 0.14), transparent);
+}
+
+/* 印章式小标 */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(176, 141, 79, 0.55);
+  color: #a07d42;
+  font-family: var(--font-serif);
+  letter-spacing: 0.2em;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.72rem;
+}
+
+/* 竖排小标题 */
+.vtext {
+  writing-mode: vertical-rl;
+  letter-spacing: 0.4em;
+  color: #6ba58e;
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+}
+
+/* 药草纹理底 */
+.herb-texture {
+  background-color: #eef2ec;
+  background-image: radial-gradient(circle at 1px 1px, rgba(47, 107, 88, 0.10) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+/* ===== 兼容旧类 ===== */
+.ria-section {
+  background: #ffffff;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.memoir-content h1 { font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: #1d2b25; }
+.memoir-content h2 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.75rem; color: #1d2b25; }
+.memoir-content h3 { font-size: 1.125rem; font-weight: 700; margin: 1.25rem 0 0.5rem; color: #2f6b58; }
+.memoir-content p { margin-bottom: 1rem; line-height: 1.85; color: #55685f; }
+
+/* 滚动条 */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #f5f5f7; }
-::-webkit-scrollbar-thumb { background: #c7c7cc; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #aeaeb2; }
+::-webkit-scrollbar-track { background: #eef2ec; }
+::-webkit-scrollbar-thumb { background: #c3d3c8; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #a8bdb1; }

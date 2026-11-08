@@ -1,86 +1,82 @@
-import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { nextOpen } from '../data/workshops'
 
 const navLinks = [
-  { path: '/learning-path', label: '拆成长' },
-  { path: '/hot', label: '拆经典' },
-  { path: '/chailive/', label: '拆指南', external: true },
-  { path: '/chaibuddy', label: '拆搭子' },
-  { path: '/workshops', label: '拆软件' },
-  { path: '/skills', label: '拆技能' },
-  { path: '/skill-fusion', label: '拆专家' },
-  { path: '/coai', label: '共拆AI' },
-  { path: '/about', label: '关于' },
+  { href: '#services', label: '调理项目' },
+  { href: '#philosophy', label: '三养之道' },
+  { href: '#consult', label: '线上咨询' },
+  { href: '#kids', label: '小儿推拿' },
+  { href: '#about', label: '关于我' },
 ]
 
 export default function Navbar() {
-  const location = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const nx = nextOpen()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll)
+    onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled || menuOpen ? 'bg-white/80 backdrop-blur-xl backdrop-saturate-150 border-b border-black/[.06]' : 'bg-white/60 backdrop-blur-md'
-    }`}>
-      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="text-[19px] font-bold tracking-tight text-[#1d1d1f]">小蛮腰·拆AI</span>
-        </Link>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled || menuOpen
+          ? 'bg-[#f7f8f4]/88 backdrop-blur-xl border-b border-[#dde5dc]'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-5 h-[60px] flex items-center justify-between">
+        {/* 品牌 */}
+        <a href="#top" className="flex items-center gap-2.5 group">
+          <span className="w-7 h-7 flex items-center justify-center border border-[#2f6b58]/45 text-[#2f6b58] font-serif text-[13px] tracking-tight group-hover:bg-[#2f6b58] group-hover:text-white transition-colors duration-300">
+            維
+          </span>
+          <span className="leading-none">
+            <span className="block text-[15.5px] font-semibold text-[#1d2b25] tracking-[0.04em]">维尔康 · Welcome</span>
+            <span className="block text-[10px] text-[#7d9287] tracking-[0.28em] mt-1">中醫工作室</span>
+          </span>
+        </a>
 
+        {/* 桌面导航 */}
         <div className="hidden md:flex items-center gap-1">
-          {navLinks.map(link => link.external ? (
+          {navLinks.map(l => (
             <a
-              key={link.path}
-              href={link.path}
-              className="px-3.5 py-1.5 rounded-full text-[13.5px] font-medium transition-all duration-200 text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-black/[.04]"
+              key={l.href}
+              href={l.href}
+              className="px-3.5 py-2 text-[13.5px] text-[#55685f] hover:text-[#2f6b58] transition-colors duration-200 tracking-[0.03em]"
             >
-              {link.label}
+              {l.label}
             </a>
-          ) : (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`px-3.5 py-1.5 rounded-full text-[13.5px] font-medium transition-all duration-200 ${
-                location.pathname === link.path
-                  ? 'bg-black/[.05] text-[#1d1d1f]'
-                  : 'text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-black/[.04]'
-              }`}
-            >
-              {link.label}
-            </Link>
           ))}
           <a
-            href={nx ? nx.link : '/workshops'}
-            className="ml-2 px-4 py-1.5 rounded-full text-[13.5px] font-semibold bg-[#0071e3] text-white hover:bg-[#0077ed] transition-colors shadow-[0_4px_14px_rgba(0,113,227,.3)]"
+            href="#contact"
+            className="ml-3 px-5 py-2 text-[13.5px] font-medium text-white bg-[#2f6b58] hover:bg-[#245245] transition-colors duration-200 tracking-[0.06em]"
           >
-            {nx ? '报名工作坊' : '课程回看'}
+            微信咨询
           </a>
         </div>
 
-        <div className="flex items-center gap-1.5 md:hidden">
-          <a href={nx ? nx.link : '/workshops'} className="px-3.5 py-1.5 rounded-full text-[13px] font-semibold bg-[#0071e3] text-white">{nx ? '报名' : '回看'}</a>
+        {/* 移动端 */}
+        <div className="flex items-center gap-2 md:hidden">
+          <a href="#contact" className="px-4 py-1.5 text-[13px] font-medium text-white bg-[#2f6b58]">
+            咨询
+          </a>
           <button
             type="button"
             aria-label={menuOpen ? '关闭菜单' : '打开菜单'}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(v => !v)}
-            className="p-2.5 -mr-1.5 rounded-full text-[#1d1d1f] hover:bg-black/[.05] active:bg-black/[.08] transition-colors"
+            className="p-2 -mr-1 text-[#1d2b25]"
           >
             {menuOpen ? (
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 6l12 12M18 6L6 18" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M6 6l12 12M18 6L6 18" />
               </svg>
             ) : (
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7h16M4 12h16M4 17h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M4 7h16M4 12h16M4 17h16" />
               </svg>
             )}
           </button>
@@ -88,29 +84,17 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-black/[.06] shadow-[0_12px_32px_rgba(0,0,0,.08)]">
-          <div className="max-w-6xl mx-auto px-4 py-2 flex flex-col">
-            {navLinks.map(link => link.external ? (
+        <div className="md:hidden bg-[#f7f8f4]/97 backdrop-blur-xl border-b border-[#dde5dc]">
+          <div className="max-w-6xl mx-auto px-5 py-2 flex flex-col">
+            {navLinks.map(l => (
               <a
-                key={link.path}
-                href={link.path}
-                className="py-3 text-[15px] font-medium text-[#6e6e73] border-b border-black/[.04] last:border-0 active:text-[#1d1d1f]"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.path}
-                to={link.path}
+                key={l.href}
+                href={l.href}
                 onClick={() => setMenuOpen(false)}
-                className={`py-3 text-[15px] border-b border-black/[.04] last:border-0 ${
-                  location.pathname === link.path
-                    ? 'text-[#1d1d1f] font-semibold'
-                    : 'text-[#6e6e73] font-medium'
-                }`}
+                className="py-3.5 text-[15px] text-[#55685f] border-b border-[#dde5dc]/70 last:border-0 tracking-[0.03em]"
               >
-                {link.label}
-              </Link>
+                {l.label}
+              </a>
             ))}
           </div>
         </div>
