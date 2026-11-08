@@ -17,7 +17,7 @@ const services = [
     k: '治脊',
     en: 'Spine Care',
     tag: '脊柱 · 力线',
-    d: '从脊柱整体力线入手，处理因姿势不良、长期劳损引起的脊背不适与体态问题，注重松解与稳定并重。',
+    d: '从脊柱整体力线入手，处理因姿势不良、长期劳损引起的脊背不适与体态问题，常用龙氏治脊手法，松解与稳定并重。',
   },
   {
     k: '拉伸',
@@ -135,7 +135,7 @@ export default function Home() {
               希望我们的专业，能帮你解除疑惑和病痛。
             </p>
             <p className="text-[13.5px] text-[#8b9c92] tracking-[0.06em] mb-10">
-              以辨证为先，以调理为要 · 线上咨询为主
+              主治中医师 · 从医 22 年 · 广州中医药大学双专业 · 线上咨询为主
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -279,7 +279,10 @@ export default function Home() {
                 如果孩子出现高热惊厥、喷射性呕吐、喘憋（三凹征）这类急重症，
                 请立刻送医，不要耽误。
               </p>
-              <span className="seal">小班 · 2–3 个家庭 · 需提前预约</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="seal">小班 · 2–3 个家庭 · 需提前预约</span>
+                <span className="seal">省中医药学会小儿推拿专委会委员</span>
+              </div>
             </div>
 
             <div className="md:col-span-7">
@@ -307,27 +310,34 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <div className="eyebrow mb-4">關於</div>
-            <h2 className="headline text-[30px] md:text-[40px]">维尔康主理人</h2>
+            <h2 className="headline text-[30px] md:text-[40px] mb-5">维尔康主理人</h2>
+            <p className="text-[13px] tracking-[0.2em] text-[#7d9287]">主治中医师 · 从医 22 年</p>
           </div>
 
           <div className="space-y-6 text-[15px] leading-[2] text-[#3f5148]">
             <p>
-              你好，我是维尔康 Welcome 工作室的主理人。工作室主营中医、针灸、推拿、治脊、拉伸，
-              也长期做小儿推拿与亲子养育的推广。
+              我毕业于<span className="text-[#2f6b58]">广州中医药大学</span>，中医学与针灸推拿双专业，
+              从医二十二年余，主治中医师。现为广东省中西医结合学会康复专业委员会常务委员、
+              广东省中医药学会小儿推拿专委会委员。
             </p>
             <p>
-              2016 年，我在公众号「维尔康 welcome」写下第一篇健康分享，
-              写的是这个工作室想做的事：<span className="text-[#2f6b58]">希望我们的专业，能帮你解除疑惑和病痛</span>。
-              这些年公众号一直在更新，从手法、穴位、饮食起居，到孩子的日常调护，能写的都写了。
-              不是为了攒流量，是想让来问的人，先弄明白自己在经历什么。
+              临床上主张<span className="text-[#2f6b58]">针药结合</span>——该用针时用针，该用药时用药，
+              擅用针灸、推拿与龙氏治脊等方法，处理家庭里常见、多发的那些毛病：
+              颈肩腰腿的不适、落枕闪腰、头痛失眠、胃肠不和，以及孩子的积食、咳嗽、睡不安稳。
             </p>
             <p>
-              我的调理思路很朴素：先看清楚，再动手。看体质，也看作息、情绪、饮食习惯——
+              2016 年，我在公众号「维尔康 welcome」写下第一篇健康分享，写的是这个工作室想做的事：
+              <span className="text-[#2f6b58]">希望我们的专业，能帮你解除疑惑和病痛</span>。
+              这些年除了看诊，也一直在做两件事：开工作室，办分享群。
+              推广中医这件事，靠一个人看不完，得让更多家庭自己懂一点。
+            </p>
+            <p>
+              我的思路很朴素：先看清楚，再动手。看体质，也看作息、情绪、饮食习惯——
               很多反复发作的不适，根子不在疼的那个地方。所以我更愿意花时间问清楚，
               而不是上来就按几下、扎两针了事。
             </p>
             <p>
-              也不承诺“根治”。身体是自己的，手法和外力只是帮忙，
+              也不承诺“根治”。身体是自己的，手法和药物只是帮忙，
               真正让状态稳下来的，是日复一日的小习惯。这也是我一直把“养心、养德、养身”
               挂在最前面的原因。
             </p>
@@ -337,17 +347,35 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-10 pt-8 border-t border-[#dde5dc] grid sm:grid-cols-3 gap-6 text-center">
-            {[
-              ['2016', '公众号开始更新'],
-              ['五术', '针灸 · 推拿 · 治脊 · 拉伸 · 小儿推拿'],
-              ['三养', '养心 · 养德 · 养身'],
-            ].map(([big, small]) => (
-              <div key={small}>
-                <div className="font-serif text-[26px] text-[#2f6b58] mb-1.5">{big}</div>
-                <div className="text-[11.5px] text-[#8b9c92] tracking-[0.06em]">{small}</div>
-              </div>
-            ))}
+          <div className="mt-12 pt-9 border-t border-[#dde5dc]">
+            <div className="text-center text-[11px] tracking-[0.34em] text-[#b08d4f] mb-8">資 歷</div>
+            <div className="grid grid-cols-3 gap-6 text-center">
+              {[
+                ['22 年', '从医'],
+                ['双专业', '中医学 · 针灸推拿'],
+                ['主治', '中医师'],
+              ].map(([big, small]) => (
+                <div key={small}>
+                  <div className="font-serif text-[26px] text-[#2f6b58] mb-1.5">{big}</div>
+                  <div className="text-[11.5px] text-[#8b9c92] tracking-[0.06em]">{small}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-9 space-y-3">
+              {[
+                ['广东省中西医结合学会康复专业委员会', '常务委员'],
+                ['广东省中医药学会小儿推拿专委会', '委员'],
+              ].map(([org, role]) => (
+                <div
+                  key={org}
+                  className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 border-b border-[#dde5dc]/70 pb-3 last:border-0 last:pb-0"
+                >
+                  <span className="text-[13px] text-[#3f5148]">{org}</span>
+                  <span className="text-[11.5px] tracking-[0.2em] text-[#b08d4f]">{role}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

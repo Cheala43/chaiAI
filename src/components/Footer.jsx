@@ -12,6 +12,7 @@ export default function Footer() {
             </div>
             <p className="text-[13px] leading-[1.9] text-[#7d9287] max-w-xs">
               中医 · 针灸 · 推拿 · 治脊 · 拉伸。以辨证为先，以调理为要。<br />
+              主治中医师 · 从医 22 年 · 广州中医药大学双专业<br />
               养心、养德、养身。
             </p>
           </div>
